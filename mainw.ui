@@ -57,11 +57,11 @@
       </property>
       <item>
        <property name="text">
-        <string>Grass_from_designer</string>
+        <string>Wall_from_designer</string>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>grass.svg</normaloff>grass.svg</iconset>
+         <normaloff>wall.svg</normaloff>wall.svg</iconset>
        </property>
        <property name="flags">
         <set>ItemIsSelectable|ItemIsUserCheckable|ItemIsEnabled</set>
@@ -69,11 +69,11 @@
       </item>
       <item>
        <property name="text">
-        <string>Wall_from_designer</string>
+        <string>Grass_from_designer</string>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>wall.svg</normaloff>wall.svg</iconset>
+         <normaloff>grass.svg</normaloff>grass.svg</iconset>
        </property>
        <property name="flags">
         <set>ItemIsSelectable|ItemIsUserCheckable|ItemIsEnabled</set>

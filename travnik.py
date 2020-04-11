@@ -6,7 +6,6 @@ import numpy
 
 
 cell_size = 32 # velikost buňky
-VALUE_ROLE = QtCore.Qt.UserRole
 
 # načtení obrázků trávy a zdi jako objektů
 SVG_GRASS = QtSvg.QSvgRenderer("grass.svg")
@@ -49,26 +48,28 @@ class GridWidget(QtWidgets.QWidget):
                 rect = QtCore.QRectF(x, y, cell_size, cell_size)
                 
                 # podkladová barva pro poloprůhledné obrázky
-                white = QtGui.QColor(255,255,255)
-                painter.fillRect(rect, QtGui.QBrush(white))
+                # white = QtGui.QColor(255,255,255)
+                # painter.fillRect(rect, QtGui.QBrush(white))
 
                 # trávu dáme všude, protože i zdi stojí na trávě
-                SVG_GRASS.render(painter, rect)
                 # zdi tam, kam patří
                 if self.array[row, column] < 0:
+                    SVG_GRASS.render(painter, rect)
                     SVG_WALL.render(painter, rect)
-                """
-
-                # šedá pro zdi, zelená pro trávu
-                if self.array[row, column] < 0:
-                    color = QtGui.QColor(115, 115, 115)         # zeď
                 else:
-                    color = QtGui.QColor(0, 255, 0)             # tráva
+                    SVG_GRASS.render(painter, rect)
 
-                # vyplníme čtvereček barvou
-                painter.fillRect(rect, QtGui.QBrush(color))
-                """
+    def mousePressEvent(self, event):
+        # převedeme klik na souřadnice matice
+        row, column = pixels_to_logical(event.x(), event.y())
 
+        # Pokud jsme v matici, aktualizujeme data
+        if 0 <= row < self.array.shape[0] and 0 <= column < self.array.shape[1]:
+            self.array[row, column] = self.selected
+
+            # tímto zajistíme překreslení widgetu v místě změny:
+            # (pro Python 3.4 a nižší volejte jen self.update() bez argumentů)
+            self.update(*logical_to_pixels(row, column), cell_size, cell_size)
 
 def main():
     app = QtWidgets.QApplication([])
@@ -90,29 +91,21 @@ def main():
     scroll_area.setWidget(grid)
 
     palette = window.findChild(QtWidgets.QListWidget,"palette")
-    """
-    # ruční zadání položek mimo Qt Designer
-    item = QtWidgets.QListWidgetItem('Grass')  # vytvoříme položku
-    icon = QtGui.QIcon('grass.svg')  # ikonu
-    item.setIcon(icon)  # přiřadíme ikonu položce
-    palette.addItem(item)  # přidáme položku do palety
+    item = QtWidgets.QListWidgetItem(palette)
+  
+    # print(palette.count())
+    
 
-    item = QtWidgets.QListWidgetItem('Wall')  # vytvoříme položku
-    icon = QtGui.QIcon('wall.svg')  # ikonu
-    item.setIcon(icon)  # přiřadíme ikonu položce
-    palette.addItem(item)  # přidáme položku do palety
-    """
     def item_activated():
         """ volá se, když uživatel zvolí položku"""
         # Položek může obecně být vybráno víc, ale v našem seznamu je to
         # zakázáno (v Designeru selectionMode=SingleSelection).
-        # Projdeme "všechny vybrané položky", i když víme že bude max. jedna.
-        for item in palette.selectedItems():
-            #print(item.data(VALUE_ROLE))
-            row_num = palette.indexFromItem(item).row()
-            print(row_num)
-
+        
+        # print(palette.currentRow())
+        grid.selected = palette.currentRow()-1
+        print(f"grid selected = {grid.selected}")
     palette.itemSelectionChanged.connect(item_activated)
+    palette.setCurrentRow(0)
     window.show()
     return app.exec()
 
