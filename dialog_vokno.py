@@ -10,13 +10,9 @@ class MyDialog(QtWidgets.QDialog):
         super(MyDialog, self).__init__()
         dialog = uic.loadUi("dialog_tutorial.ui", self)
         dialog.show()
-        #self.ui = Ui_Dialog()       # přiřazení třídy U_Dialog
-        #self.ui.setupUi(self)       
-        #self.show()
-
+       
     def say_hello(self, user_text):
         text = (f"Hello there, {user_text}!")
-        # self.ui.label_3.setText(text)
         self.label_3.setText(text)
 
     def accept(self):
