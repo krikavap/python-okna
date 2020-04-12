@@ -25,7 +25,7 @@ class MyDialog(QtWidgets.QDialog):
         
 def main():
     app = QtWidgets.QApplication([])
-    dialog = MyDialog()
+    _dialog = MyDialog()
     app.exec()
 
 if __name__ == "__main__":
