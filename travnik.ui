@@ -134,7 +134,7 @@
   </widget>
   <action name="actionNew">
    <property name="text">
-    <string>New</string>
+    <string>Nová hra</string>
    </property>
   </action>
   <action name="actionQuit">
@@ -177,8 +177,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionNew</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>new_game()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>281</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>zmena()</slot>
+  <slot>new_game()</slot>
  </slots>
 </ui>

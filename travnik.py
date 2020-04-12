@@ -4,7 +4,6 @@ travnik.py
 from PyQt5 import QtWidgets, uic, QtCore, QtGui, QtSvg
 import numpy
 
-
 cell_size = 32 # velikost buňky
 
 # načtení obrázků trávy a zdi jako objektů
@@ -78,21 +77,46 @@ class GridWidget(QtWidgets.QWidget):
             # (pro Python 3.4 a nižší volejte jen self.update() bez argumentů)
             self.update(*self.logical_to_pixels(row, column), cell_size, cell_size)
      
+class MyDialog(QtWidgets.QDialog):
+    """
+    dialog pro definici velikosti gridu u nové hry
+    dialog i s událostmi je výstupem Qt Designeru
+    """
+    def __init__(self):
+        super(MyDialog, self).__init__()
+        dialog = uic.loadUi("newtravnik.ui", self)
+        text = "Zadej rozměry nové mapy"
+        self.title_text(text)
+        self.rows = 15
+        self.cols = 20
+        _result = dialog.exec()
+       
+    def title_text(self, user_text):
+        self.label.setText(user_text)
+
+    def accept(self):
+        super().accept()
+        self.cols = self.colsBox.value()
+        self.rows = self.rowsBox.value()
+        
+    def reject(self):
+        super().reject()
+        
 class MyWindow(QtWidgets.QMainWindow):
     """ 
     definice hlavního okna aplikace
     """
     def __init__(self):
         super(MyWindow, self).__init__()
-        window = uic.loadUi("travnik.ui", self)
-        self.grid_preparation(window)
-        self.palette_preparation(window)
-        window.show()
+        self.window = uic.loadUi("travnik.ui", self)
+        self.grid_preparation(self.window, 15, 20)
+        self.palette_preparation(self.window)
+        self.window.show()
         
-    def grid_preparation(self, window):
+    def grid_preparation(self, window, rows, cols):
         # připraví pole pro grid a inicializuje jej a naplní jej do oblasti scroll_area v hlavním okně
-        array = numpy.zeros((15,20), dtype=numpy.int8)      # vytvoření pole nul
-        array[:, 5] = -1                                    # nějaká zeď reprezentovaná -1
+        array = numpy.zeros((rows, cols), dtype=numpy.int8)      # vytvoření pole nul
+        array[:, 5] = -1                                    # nějaká defaultní zeď reprezentovaná -1
         # získáme oblast s posuvníky z Qt designeru
         self.scroll_area = window.findChild(QtWidgets.QScrollArea, "scrollArea")     # namapování na ui
         # dáme do ní náš grid
@@ -104,13 +128,25 @@ class MyWindow(QtWidgets.QMainWindow):
         self.palette = window.findChild(QtWidgets.QListWidget,"palette")
         self.palette.setCurrentRow(0)
 
+    def new_game(self):
+        """
+        metoda je volána z menu zadáním volby nová hra
+        """
+        dialog = MyDialog()
+        # provede se v případě, že výsledkem dialogu je OK
+        # překreslení matice, palety, nastavení výchozího nástroje v paletě a zobrazení překresleného okna
+        self.grid_preparation(self.window, dialog.rows, dialog.cols)
+        self.palette_preparation(self.window)
+        self.grid.selected = -1
+        self.window.show()
+    
     def zmena(self):
         # odchytává změnu nástroje v paletě. událost je nastavena v návrhu okna Qt Designeru
         self.grid.selected = self.palette.currentRow()-1
         
 def main():
     app = QtWidgets.QApplication([])
-    window = MyWindow()
+    _window = MyWindow()
     app.exec()
 
 main()
