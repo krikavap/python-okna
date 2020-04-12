@@ -78,6 +78,28 @@ class GridWidget(QtWidgets.QWidget):
             # (pro Python 3.4 a nižší volejte jen self.update() bez argumentů)
             self.update(*self.logical_to_pixels(row, column), cell_size, cell_size)
      
+class MyDialog(QtWidgets.QDialog):
+    def __init__(self):
+        super(MyDialog, self).__init__()
+        dialog = uic.loadUi("newtravnik.ui", self)
+        text = "Nazdar"
+        self.title_text(text)
+        result = dialog.exec()
+       
+    def title_text(self, user_text):
+        self.label.setText(user_text)
+
+    def accept(self):
+        super().accept()
+        cols = self.colsBox.value()
+        rows = self.rowsBox.value()
+        print(f"sirka {cols} vyska {rows} ")
+        
+    def reject(self):
+        super().reject()
+        print("Reject")
+
+
 class MyWindow(QtWidgets.QMainWindow):
     """ 
     definice hlavního okna aplikace
@@ -92,7 +114,7 @@ class MyWindow(QtWidgets.QMainWindow):
     def grid_preparation(self, window):
         # připraví pole pro grid a inicializuje jej a naplní jej do oblasti scroll_area v hlavním okně
         array = numpy.zeros((15,20), dtype=numpy.int8)      # vytvoření pole nul
-        array[:, 5] = -1                                    # nějaká zeď reprezentovaná -1
+        array[:, 5] = -1                                    # nějaká defaultní zeď reprezentovaná -1
         # získáme oblast s posuvníky z Qt designeru
         self.scroll_area = window.findChild(QtWidgets.QScrollArea, "scrollArea")     # namapování na ui
         # dáme do ní náš grid
@@ -104,6 +126,9 @@ class MyWindow(QtWidgets.QMainWindow):
         self.palette = window.findChild(QtWidgets.QListWidget,"palette")
         self.palette.setCurrentRow(0)
 
+    def new_game(self):
+        dialog = MyDialog()
+    
     def zmena(self):
         # odchytává změnu nástroje v paletě. událost je nastavena v návrhu okna Qt Designeru
         self.grid.selected = self.palette.currentRow()-1
