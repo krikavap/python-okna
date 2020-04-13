@@ -1,5 +1,13 @@
 """
 travnik.py
+editor hrací plochy
+GUI je uloženo v samostatných souborech travnik.ui a newtravnik.ui vytvořených QtDesignerem
+v těchto souborech je i část řídící logiky událostí
+symboly objektů jsou v samostatných svg souborech 
+grass.svg
+wall.svg
+watter.svg 
+castle.svg
 """
 from PyQt5 import QtWidgets, uic, QtCore, QtGui, QtSvg
 import numpy
@@ -109,18 +117,21 @@ class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.window = uic.loadUi("travnik.ui", self)
-        self.grid_preparation(self.window, 15, 20)
+        self.new_array_preparation(15, 20)
+        self.grid_preparation(self.window)
         self.palette_preparation(self.window)
         self.window.show()
         
-    def grid_preparation(self, window, rows, cols):
+    def new_array_preparation(self, rows, cols):
         # připraví pole pro grid a inicializuje jej a naplní jej do oblasti scroll_area v hlavním okně
-        array = numpy.zeros((rows, cols), dtype=numpy.int8)      # vytvoření pole nul
-        array[:, 5] = -1                                    # nějaká defaultní zeď reprezentovaná -1
+        self.array = numpy.zeros((rows, cols), dtype=numpy.int8)      # vytvoření pole nul
+        self.array[:, 5] = -1                                    # nějaká defaultní zeď reprezentovaná -1
+
+    def grid_preparation(self, window):
         # získáme oblast s posuvníky z Qt designeru
         self.scroll_area = window.findChild(QtWidgets.QScrollArea, "scrollArea")     # namapování na ui
         # dáme do ní náš grid
-        self.grid = GridWidget(array)   # iniciace gridu
+        self.grid = GridWidget(self.array)   # iniciace gridu
         self.scroll_area.setWidget(self.grid)       # přiřazení gridu do scroll_area
 
     def palette_preparation(self, window):
@@ -131,15 +142,36 @@ class MyWindow(QtWidgets.QMainWindow):
     def new_game(self):
         """
         metoda je volána z menu zadáním volby nová hra
+        řídí vytvoření nové hrací plochy o rozměrech zadaných uživatelem
         """
         dialog = MyDialog()
         # provede se v případě, že výsledkem dialogu je OK
         # překreslení matice, palety, nastavení výchozího nástroje v paletě a zobrazení překresleného okna
-        self.grid_preparation(self.window, dialog.rows, dialog.cols)
-        self.palette_preparation(self.window)
-        self.grid.selected = -1
+        self.new_array_preparation(dialog.rows, dialog.cols)    # vytvoření nového pole o rozměrech zadaných dialogem
+        self.grid_preparation(self.window)                      # přiřazení pole do gridu a do scroll area
+        self.palette_preparation(self.window)      # příprava palety
+        self.grid.selected = -1                     
         self.window.show()
     
+    def save_game(self):
+        """
+        metoda je volána z menu zadáním volby ulož hru
+        uloží aktuální pole self.array do textového souboru pod názvem zvoleným uživatelem
+        """
+        soubor, _ = QtWidgets.QFileDialog.getSaveFileName(self, "Ulož hru","","Všechny soubory (*);;Text Files (*.txt)")    # vyvolá standardní dialog pro uložení
+        numpy.savetxt(soubor, self.grid.array, delimiter=",", fmt="%2i")            # uloží pole jako csv s čárkami fmt definuje tvar čísel (int, 2 místa)
+        
+    def open_game(self):
+        """
+        metoda je volána z menu volbou Otevři hru
+        nahraje hru - pole self.array ze souboru
+        """
+        soubor, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Nahraj hru","","Všechny soubory (*);;Text Files (*.txt)")      # vyvolá standardní dialog pro otevření souboru
+        self.array = numpy.loadtxt(soubor, delimiter=",")       # načte matici ze souboru csv s hodnotami oddělenými čárkou
+        self.grid_preparation(self.window)                  # připraví hrací plochu
+        self.palette_preparation(self.window)           # připraví paletu
+        self.grid.selected = -1                         # výchozí nástroj palety pro případ, že uživatel jej nevybere sám
+        
     def zmena(self):
         # odchytává změnu nástroje v paletě. událost je nastavena v návrhu okna Qt Designeru
         self.grid.selected = self.palette.currentRow()-1

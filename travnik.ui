@@ -32,7 +32,7 @@
          <x>0</x>
          <y>0</y>
          <width>640</width>
-         <height>480</height>
+         <height>503</height>
         </rect>
        </property>
       </widget>
@@ -115,31 +115,40 @@
      <string>Map</string>
     </property>
     <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
     <addaction name="actionQuit"/>
    </widget>
    <addaction name="menuMap"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionQuit"/>
-  </widget>
   <action name="actionNew">
    <property name="text">
     <string>Nová hra</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionQuit">
    <property name="text">
-    <string>Quit</string>
+    <string>Zavři</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Ulož hru</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Otevři hru</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
  </widget>
@@ -193,9 +202,43 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionSave</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_game()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>281</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpen</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_game()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>14</x>
+     <y>11</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>538</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>zmena()</slot>
   <slot>new_game()</slot>
+  <slot>save_game()</slot>
+  <slot>open_game()</slot>
  </slots>
 </ui>
