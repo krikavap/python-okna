@@ -86,5 +86,57 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>radioButton_FirstClass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>dispFare()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>128</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_BusinessClass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>dispFare()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_EconomyClass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>dispFare()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>337</x>
+     <y>209</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>dispFare()</slot>
+ </slots>
 </ui>
