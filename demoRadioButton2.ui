@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="labelVelikost">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>40</y>
+     <width>67</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vyber velikost</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelShrnuti">
+   <property name="geometry">
+    <rect>
+     <x>26</x>
+     <y>348</y>
+     <width>421</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelPlatba">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>160</y>
+     <width>98</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vyber způsob platby</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelDoprava">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>256</y>
+     <width>108</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vyber způsob dopravy</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>65</y>
+     <width>36</width>
+     <height>88</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QRadioButton" name="radioButtonVelikostS">
+      <property name="text">
+       <string>S</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonVelikostM">
+      <property name="text">
+       <string>M</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonVelikostL">
+      <property name="text">
+       <string>L</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonVelikostXL">
+      <property name="text">
+       <string>XL</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>277</y>
+     <width>114</width>
+     <height>65</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QRadioButton" name="radioButtonPosta">
+      <property name="text">
+       <string>Česká pošta</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonPPL">
+      <property name="text">
+       <string>PPL</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonOsobne">
+      <property name="text">
+       <string>Osobní vyzvednutí</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>185</y>
+     <width>105</width>
+     <height>65</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QRadioButton" name="radioButtonKarta">
+      <property name="text">
+       <string>Platební karta</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonPrevod">
+      <property name="text">
+       <string>Bankovní převod</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButtonDobirka">
+      <property name="text">
+       <string>Dobírka</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioButtonVelikostS</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>51</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonVelikostM</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonVelikostL</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>27</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonVelikostXL</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonKarta</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonPrevod</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>214</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonDobirka</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>240</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonPosta</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>287</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonPPL</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>189</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonOsobne</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Dialog</receiver>
+   <slot>shrnuti()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>245</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>325</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>shrnuti()</slot>
+ </slots>
+</ui>
