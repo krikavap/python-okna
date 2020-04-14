@@ -10,7 +10,7 @@ from PyQt5 import QtWidgets, uic
 class MyForm(QtWidgets.QDialog):
     """
     třída formuláře
-    
+    využívá standardní metody třídy QDialog pro výběr, kopírování a vložení textu
     """
     def __init__(self):
         super().__init__()
