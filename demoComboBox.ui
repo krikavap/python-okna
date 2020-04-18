@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>396</width>
+    <height>210</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>61</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vyber jídlo</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>160</y>
+     <width>301</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>20</y>
+     <width>211</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Vepřová pečeně, knedlík, zelí</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Hovězí guláš, houskový knedlík</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Pečené kuře, špenát, bramborový knedlík</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Hovězí pečeně, rajská omáčka, rýže</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>activated(int)</signal>
+   <receiver>Dialog</receiver>
+   <slot>vystup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>165</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>vystup()</slot>
+ </slots>
+</ui>
