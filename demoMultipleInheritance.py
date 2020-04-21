@@ -77,7 +77,7 @@ class MyForm(QtWidgets.QDialog):
 
     def disp_message(self):
         # vytvoří instanci třídy Marks
-        resultsObj = Results(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text())
+        resultsObj = Results(self.lineEdit.text(), self.lineEdit_2.text(), self.spinBox_hist.value(), self.spinBox_geog.value())
         # vypíše výsledek v label_total a label_perc
         self.label_total.setText(f"{resultsObj.getTotalMarks():.0f} bodů")
         self.label_perc.setText(f"{resultsObj.getPercentage():.2f} %")
