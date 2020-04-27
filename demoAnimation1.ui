@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>762</width>
-    <height>397</height>
+    <height>830</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,15 +18,24 @@
     <rect>
      <x>270</x>
      <y>30</y>
-     <width>71</width>
-     <height>71</height>
+     <width>256</width>
+     <height>256</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>256</width>
+     <height>256</height>
+    </size>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>wall.svg</pixmap>
+    <pixmap>ZlXo.gif</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonPushDown">
