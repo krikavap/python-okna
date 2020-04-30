@@ -20,10 +20,10 @@ class Window(QDialog):
         self.anim.setKeyValueAt(0, QRect(0,0,0,0))        # startovní pozice
         self.anim.setKeyValueAt(0.5, QRect(420,460,0,0))   
         self.anim.setKeyValueAt(1, QRect(850,0,0,0))   
-       
-       
-        self.anim.start()           # start animace
-def main():
+        
+        self.anim.start()
+        
+ def main():
     app = QApplication([])
     _window = Window()
     app.exec()
