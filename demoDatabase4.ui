@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>604</width>
+    <height>542</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="pushButtonDisplayRows">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>400</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Display Rows</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelResponse">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>450</y>
+     <width>481</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>440</y>
+     <width>501</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>51</x>
+     <y>51</y>
+     <width>501</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Enter table name</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEditTableName</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Enter database name</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEditDBName</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEditDBName"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEditTableName"/>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="rowCount">
+       <number>10</number>
+      </property>
+      <property name="columnCount">
+       <number>4</number>
+      </property>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>pushButtonDisplayRows</zorder>
+  <zorder>frame</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>labelResponse</zorder>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonDisplayRows</sender>
+   <signal>pressed()</signal>
+   <receiver>Dialog</receiver>
+   <slot>DisplayRows()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>DisplayRows()</slot>
+ </slots>
+</ui>
