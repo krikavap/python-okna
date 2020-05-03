@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>604</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>220</y>
+     <width>501</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="labelResponse">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>481</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>180</y>
+     <width>501</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QPushButton" name="pushButtonFirst">
+    <property name="text">
+     <string>First Rows</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonPrevious">
+    <property name="text">
+     <string>Previous</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonNext">
+    <property name="text">
+     <string>Next</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonLast">
+    <property name="text">
+     <string>Last Rows</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>391</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEditPassword">
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEditEmailAddress"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Password</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEditPassword</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Email Address</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEditEmailAddress</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Name</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEditName</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEditName"/>
+    </item>
+   </layout>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>lineEditEmailAddress</zorder>
+  <zorder>lineEditPassword</zorder>
+  <zorder>lineEditName</zorder>
+  <zorder>lineEditEmailAddress</zorder>
+  <zorder>lineEditPassword</zorder>
+  <zorder>pushButtonFirst</zorder>
+  <zorder>pushButtonPrevious</zorder>
+  <zorder>pushButtonNext</zorder>
+  <zorder>pushButtonLast</zorder>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonFirst</sender>
+   <signal>pressed()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ShowFirstRow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>60</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonPrevious</sender>
+   <signal>pressed()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ShowPreviousRow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>264</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonNext</sender>
+   <signal>pressed()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ShowNextRow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>402</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>466</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonLast</sender>
+   <signal>pressed()</signal>
+   <receiver>Dialog</receiver>
+   <slot>ShowLastRow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>ShowFirstRow()</slot>
+  <slot>ShowPreviousRow()</slot>
+  <slot>ShowLastRow()</slot>
+  <slot>ShowNextRow()</slot>
+ </slots>
+</ui>
